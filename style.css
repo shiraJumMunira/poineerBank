@@ -1,0 +1,40 @@
+body{
+    padding: 100px;
+}
+
+input{
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+.submit-details {
+    margin-top: 70px;
+    padding: 50px;
+    box-shadow: -1px 1px 19px lightgrey;
+    border-radius: 20px;
+}
+
+#transition-area{
+    display: none;
+}
+
+.status {
+    margin: 15px 30px;
+    color: white;
+    padding: 50px;
+    border-radius: 10px;
+}
+.deposit {
+    background-color: #604EC9;
+}
+
+.withdraw {
+    background-color: #F19671;
+}
+.blance {
+    background-color: orange;
+}
+h3 {
+    font-size: 40px;
+}
+
+

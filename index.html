@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poineer Bank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <div id="log-in" class="container">
+         <h1 class="text-center">Welcome To Poineer Bank</h1>
+         <div class="submit-details">
+             <h2>Login</h2>
+             <input type="email" class="form-control" placeholder="Enter your email">
+             <input type="password" class="form-control" placeholder="Enter your password">
+             <button id="login" class="btn btn-success">Enter</button>
+         </div>
+     </div>
+
+     <div id="transition-area" class="container">
+         <div class="row">
+             <div class="col-md-4 ">
+                 <div class="deposit status">
+                     <h5>Deposit</h5>
+                     <h3>$ <span id="currentDeposit">00</span></h3>
+                 </div>
+             </div>
+             <div class="col-md-4">
+                <div class="status withdraw">
+                    <h5>Withdraw</h5>
+                     <h3>$ <span id="currentWithdraw"> 00</span></h3>
+                </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="status blance">
+                    <h5>Blance</h5>
+                    <h3>$ <span id="currentBlance">1240</span></h3>
+                 </div>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-md-6">
+                <div class="submit-details">
+                    <h4>Deposit</h4>
+                    <input id="depositAmount" type="number" class="form-control" placeholder="$ amount you want to withdraw">
+                    <button id="addDeposit" class="btn btn-success">Deposit</button>
+                </div>
+             </div>
+             <div class="col-md-6">
+                <div class="submit-details">
+                    <h4>Withdraw</h4>
+                    <input id="WithDrawAmount" type="number" class="form-control" placeholder="$ amount you want to deposit">
+                    <button id="addWithdraw" class="btn btn-success">Withdraw</button>
+                </div>
+             </div>
+         </div>
+
+     </div>
+
+
+     <script>
+
+        //  login button event handler
+         const logBtn =document.getElementById('login');
+         logBtn.addEventListener('click', function () {
+             const logIn = document.getElementById('log-in');
+             logIn.style.display = 'none';
+             const transitionArea = document.getElementById('transition-area');
+             transitionArea.style.display = 'block';
+         })
+
+        //  deposit button event handler
+        const depositBtn = document.getElementById('addDeposit');
+        depositBtn.addEventListener('click', function(){
+            // const depositAmount =document.getElementById('depositAmount').value;
+            // const depositNumber = parseFloat(depositAmount);
+            const depositNumber = getInputNumber('depositAmount');
+
+            /*
+            const currentDeposit = document.getElementById('currentDeposit').innerText;
+            const currentDepositNumber = parseFloat(currentDeposit);
+            const totalDeposit = depositNumber + currentDepositNumber;
+             document.getElementById('currentDeposit').innerText = totalDeposit;
+
+            const currentBlance = document.getElementById('currentBlance').innerText;
+            const currentBlanceNumber = parseFloat(currentBlance);
+            const totalBlance = depositNumber + currentBlanceNumber;
+            document.getElementById('currentBlance').innerText = totalBlance;
+            */
+
+
+            // function call deposit
+            updateSpanText('currentDeposit', depositNumber);
+            // function call balance
+            updateSpanText('currentBlance', depositNumber);
+
+            document.getElementById('depositAmount').value =""
+        })
+
+
+        // withdraw button event handler
+
+
+        const withdrawBtn = document.getElementById('addWithdraw');
+        withdrawBtn.addEventListener('click', function() {
+            // const WithDrawAmount = document.getElementById('WithDrawAmount').value;
+            // const withdrawNumber = parseFloat(WithDrawAmount);
+            const withdrawNumber = getInputNumber('WithDrawAmount');
+            
+            // function call withdraw
+            updateSpanText('currentWithdraw' , withdrawNumber);
+            // function call balance
+            updateSpanText('currentBlance', -1 * withdrawNumber);
+
+            document.getElementById('WithDrawAmount').value =""
+        }) 
+
+
+        // withdraw + balance event function
+        function getInputNumber(id) {
+            const amount = document.getElementById(id).value;
+            const amountNumber = parseFloat(amount);
+            return amountNumber;
+        }
+
+
+
+
+        // deposit + balance button event handler function 
+
+        function updateSpanText(id, depositNumber) {
+
+            const current = document.getElementById(id).innerText;
+            const currentNumber = parseFloat(current);
+            const totalAmount = depositNumber + currentNumber;
+            document.getElementById(id).innerText = totalAmount;
+        }
+
+     </script>
+</body>
+</html>
