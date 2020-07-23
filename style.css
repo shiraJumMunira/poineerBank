@@ -1,5 +1,6 @@
 body{
     padding: 100px;
+    background-color: rgb(118, 133, 125);
 }
 
 input{
@@ -11,6 +12,7 @@ input{
     padding: 50px;
     box-shadow: -1px 1px 19px lightgrey;
     border-radius: 20px;
+    background-color: rgb(197, 204, 206);
 }
 
 #transition-area{
